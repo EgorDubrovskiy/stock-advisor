@@ -1,0 +1,16 @@
+@import '../../variables.scss';
+
+.list {
+    list-style: none;
+    padding-inline-start: 0px;
+}
+
+.font-size {
+    font-size: 18px;
+}
+
+.basic-font {
+    font-family: $main-font;
+    color: $green;
+    font-size: 16px;
+}

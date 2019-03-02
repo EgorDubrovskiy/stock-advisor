@@ -1,0 +1,12 @@
+@import 'variables.scss';
+
+.basic-font {
+  font-family: $main-font;
+  color: $green;
+  font-size: 1.3em;
+}
+
+.table-bg-grey {
+  background-color: #F2F4F3;
+  border: 1px solid black;
+}

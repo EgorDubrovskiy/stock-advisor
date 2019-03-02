@@ -1,0 +1,47 @@
+@import "../../../constants/scss/colors";
+
+.uploader-file {
+    vertical-align: middle;
+    display: table-cell !important;
+    padding-top: unset;
+    padding-bottom: unset;
+}
+
+//Styles for sizes begin
+.uploader-file.small {
+    height: 30px;
+    min-width: 80px;
+    margin-bottom: 24px;
+    font-size: 12px;
+}
+
+.uploader-file.medium {
+    height: 38px;
+    min-width: 96px;
+    margin-bottom: 16px;
+}
+
+.uploader-file.large {
+    height: 48px;
+    min-width: 240px;
+    margin-bottom: 48px;
+}
+//Styles for sizes end
+
+//Styles for colors begin
+//On green
+.uploader-file.green {
+    background-color: $green-bg;
+}
+.uploader-file.green:hover {
+    background-color: $green;
+}
+
+//On blue
+.uploader-file.blue {
+    background-color: $blue-bg;
+}
+.uploader-file.blue:hover {
+    background-color: $blue;
+}
+//Styles for colors end

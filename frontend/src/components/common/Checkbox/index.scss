@@ -1,0 +1,22 @@
+@import "../../../constants/scss/colors";
+
+//Checkbox container
+.checkbox-container label {
+    height: 24px;
+    margin-bottom: 48px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+//Checkbox
+.checkbox-container label span:first-child {
+    color: $green;
+    padding: 0;
+    margin-right: 8px;
+}
+
+//Label
+.checkbox-container label span:last-child {
+    color: $green;
+    font: inherit;
+}

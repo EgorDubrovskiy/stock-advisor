@@ -1,0 +1,50 @@
+@import "../../../constants/scss/colors";
+
+button.button {
+    display: block;
+    color: white;
+}
+
+//Text block
+button.button:not(.small) span:first-child {
+    padding-top: 2px;
+}
+
+//Styles for sizes begin
+button.small {
+    height: 30px;
+    min-width: 80px;
+    margin-bottom: 24px;
+    font-size: 0.75rem;
+}
+
+button.medium {
+    height: 38px;
+    min-width: 96px;
+    margin-bottom: 16px;
+}
+
+button.large {
+    height: 48px;
+    min-width: 240px;
+    margin-bottom: 48px;
+}
+//Styles for sizes end
+
+//Styles for colors begin
+//On green
+button.button.green {
+    background-color: $green-bg;
+}
+button.button.green:hover {
+    background-color: $green;
+}
+
+//On blue
+button.button.blue {
+    background-color: $blue-bg;
+}
+button.button.blue:hover {
+    background-color: $blue;
+}
+//Styles for colors end

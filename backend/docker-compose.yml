@@ -1,0 +1,57 @@
+version: "3"
+
+volumes:
+  mysql-data:
+  redis-data:
+
+services:
+  laravel-php:
+    container_name: laravel-php
+    image: laravel-php
+    build:
+      context: .
+      dockerfile: .docker/php/Dockerfile
+      args:
+        INSTALL_XDEBUG: "true"
+        INSTALL_OPCACHE: "false"
+    depends_on:
+      - laravel-mysql
+    volumes:
+      - .:/var/www
+  laravel-nginx:
+      container_name: laravel-nginx
+      image: laravel-nginx
+      build:
+        context: .
+        dockerfile: .docker/nginx/Dockerfile
+        args:
+          PHP_SERVICE: "laravel-php"
+      volumes:
+        - .:/var/www
+      links:
+        - laravel-php
+      depends_on:
+        - laravel-php
+      ports:
+        - 8000:80
+  laravel-mysql:
+      container_name: laravel-mysql
+      image: laravel-mysql
+      build:
+        context: .
+        dockerfile: .docker/mysql/Dockerfile
+      volumes:
+        - ./.docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+        - mysql-data:/var/lib/mysql
+      ports:
+        - 33006:3306
+      env_file:
+        - ./.docker/mysql/.env.mysql
+  laravel-redis:
+      container_name: laravel-redis
+      image: bitnami/redis:4.0
+      environment:
+        - ALLOW_EMPTY_PASSWORD=yes
+      volumes:
+        - redis-data:/bitnami/redis/data
+

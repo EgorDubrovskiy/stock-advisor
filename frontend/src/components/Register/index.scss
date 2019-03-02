@@ -1,0 +1,26 @@
+@import 'src/variables.scss';
+
+.title-color {
+    color: $bg-dark-green;
+}
+
+.title-font {
+    font-family: $main-font;
+    font-size: 22pt;
+    font-weight: 700;
+}
+
+.input-font {
+    font-family: $main-font;
+    font-weight: bold;
+    font-size: 18pt;
+}
+
+.button-font {
+    font-family: $main-font;
+    font-size: 16pt;
+}
+
+.bg-color {
+    background-color: $bg-green;
+}

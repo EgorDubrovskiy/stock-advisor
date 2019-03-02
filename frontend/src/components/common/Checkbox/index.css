@@ -1,0 +1,14 @@
+.checkbox-container label {
+  height: 24px;
+  margin-bottom: 48px;
+  margin-left: 0;
+  margin-right: 0; }
+
+.checkbox-container label span:first-child {
+  color: #1f8456;
+  padding: 0;
+  margin-right: 8px; }
+
+.checkbox-container label span:last-child {
+  color: #1f8456;
+  font: inherit; }

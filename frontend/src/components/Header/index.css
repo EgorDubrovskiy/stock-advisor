@@ -1,0 +1,10 @@
+.logout-button {
+    border: none;
+    cursor: pointer;
+    background: none;
+    font-size: 10px;
+}
+
+.header-font {
+    font-size: 18px;
+}

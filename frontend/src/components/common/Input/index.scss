@@ -1,0 +1,22 @@
+@import "../../../constants/scss/colors";
+
+.input-container .error-area {
+    margin-bottom: 32px;
+}
+
+//Parent of input
+article div:first-child {
+    border-bottom-color: $green;
+    height: 48px;
+}
+
+//Label
+article div:first-child label {
+    color: $green;
+    opacity: 0.5;
+}
+
+//Label and input
+article div:first-child label, article div:first-child input {
+    margin-bottom: 14.5px;
+}

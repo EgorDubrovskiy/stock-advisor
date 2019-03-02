@@ -1,0 +1,13 @@
+.input-container .error-area {
+  margin-bottom: 32px; }
+
+article div:first-child {
+  border-bottom-color: #1f8456;
+  height: 48px; }
+
+article div:first-child label {
+  color: #1f8456;
+  opacity: 0.5; }
+
+article div:first-child label, article div:first-child input {
+  margin-bottom: 14.5px; }

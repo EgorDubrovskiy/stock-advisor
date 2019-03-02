@@ -1,0 +1,34 @@
+button.button {
+  display: block;
+  color: white; }
+
+button.button:not(.small) span:first-child {
+  padding-top: 2px; }
+
+button.small {
+  height: 30px;
+  min-width: 80px;
+  margin-bottom: 24px;
+  font-size: 0.75rem; }
+
+button.medium {
+  height: 38px;
+  min-width: 96px;
+  margin-bottom: 16px; }
+
+button.large {
+  height: 48px;
+  min-width: 240px;
+  margin-bottom: 48px; }
+
+button.button.green {
+  background-color: #1ba261; }
+
+button.button.green:hover {
+  background-color: #1f8456; }
+
+button.button.blue {
+  background-color: #007bff; }
+
+button.button.blue:hover {
+  background-color: #0069d9; }

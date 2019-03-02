@@ -1,0 +1,19 @@
+.title-color {
+  color: #092327; }
+
+.title-font {
+  font-family: "Helvetica";
+  font-size: 22pt;
+  font-weight: 700; }
+
+.input-font {
+  font-family: "Helvetica";
+  font-weight: bold;
+  font-size: 18pt; }
+
+.button-font {
+  font-family: "Helvetica";
+  font-size: 16pt; }
+
+.bg-color {
+  background-color: #208457; }

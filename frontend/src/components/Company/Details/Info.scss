@@ -1,0 +1,61 @@
+@import 'variables.scss';
+
+.basic-font {
+  font-family: $main-font;
+  color: $green;
+  font-size: 1.3em;
+}
+
+.stock-cost {
+    font-family: $main-font;
+    font-weight: bold;
+    color: $bg-green;
+}
+
+.price-fall {
+    font-family: $main-font;
+    font-weight: bold;
+    color: $red;
+}
+
+.comp-name-text {
+    font-family: $main-font;
+    font-size: 18pt;
+    font-weight: bold;
+}
+
+.comp-news-text {
+    font-family: $main-font;
+    font-size: 16pt;
+    font-weight: bold;
+    color: $bg-green;
+}
+
+.news-link-text {
+    font-family: $main-font;
+    font-size: 10pt;
+    font-weight: bolder;
+    color:$bg-green;
+}
+
+.date-upd-text {
+    font-family: $main-font;
+    font-size: 10pt;
+    font-style: italic;
+}
+
+.bt-font {
+    font-family: $main-font;
+}
+
+.bt-bg-color {
+    background-color: $bg-green;
+}
+
+.list {
+    list-style: none;
+}
+
+button:hover {
+    cursor: pointer;
+}

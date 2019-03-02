@@ -1,0 +1,49 @@
+@import 'src/variables.scss';
+
+.title-font-large {
+    font-family: $main-font;
+    font-size: 56px;
+    color: $bg-dark-green;
+    font-weight: bold;
+}
+
+.title-font-medium {
+    font-family: $main-font;
+    font-size: 32px;
+    color: $bg-dark-green;
+    font-weight: bold;
+}
+
+.title-font-small {
+    font-family: $main-font;
+    font-size: 22px;
+    color: $bg-dark-green;
+    font-weight: bold;
+}
+
+.pic-font-small {
+    font-family: $main-font;
+    font-size: 16px;
+    color: $bg-dark-green;
+    font-weight: bold;
+}
+
+.title-small-mg {
+    margin-bottom: 20%;
+}
+
+.sub-title-font {
+    font-family: $main-font;
+    font-size: 22px;
+    color: $bg-dark-green;
+}
+
+.p-text {
+    font-family: $main-font;
+    font-size: 18px;
+    color: $bg-dark-green;
+}
+
+.p-bg {
+    background-color: $bg-p-light;
+}

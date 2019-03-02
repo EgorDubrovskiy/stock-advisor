@@ -1,0 +1,3 @@
+table.component.first-column-th tr td:first-child {
+  font-weight: bold;
+  text-align: center; }

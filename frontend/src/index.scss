@@ -1,0 +1,104 @@
+@import "constants/scss/fonts";
+@import 'variables';
+@import 'components/common/Button/index';
+@import 'components/common/Checkbox/index';
+@import 'components/common/Input/index';
+@import 'components/common/News/index';
+@import 'components/common/Loading/index';
+@import 'components/common/Table/index';
+@import 'components/common/UploaderFile/index';
+
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  font: $main-font
+}
+
+.bg-dark-green {
+  background-color: $bg-dark-green;
+}
+
+.bg-green {
+  background-color: $bg-green;
+}
+
+.link-green {
+   a {
+     color: $green;
+   }
+  a:hover {
+    color: $green;
+  }
+}
+
+.nav-item {
+  margin: 5px 0 5px 5px;
+}
+
+.header {
+  a {
+    color: $link-font-color;
+  }
+  a:hover {
+    color: $link-font-color;
+    text-decoration: unset;
+  }
+}
+
+.user-details {
+  img {
+    border: 1px solid white;
+    border-radius: 50%;
+  }
+  span {
+    font-size: $medium-font-size;
+  }
+}
+
+.user-menu {
+  top: 6vw;
+  li {
+    margin-top: 5px;
+  }
+  a {
+    margin: unset;
+    padding: unset;
+    font-size: $small-font-size;
+    color: $link-font-color;
+  }
+  a:hover {
+    color: $link-font-color;
+    text-decoration: unset;
+  }
+}
+
+.navbar-collapse {
+  a {
+    color: $link-font-color;
+  }
+  ul {
+    flex-direction: row;
+  }
+}
+
+.btn-search {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-search:focus {
+  outline: none;
+}
+
+.page-footer {
+  bottom: 0;
+  height: 50px;
+}
+
+.scrollable {
+  overflow: auto;
+}
