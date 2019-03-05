@@ -1,0 +1,34 @@
+.logout-button {
+    border: none;
+    cursor: pointer;
+    background: none;
+    font-size: 10px;
+}
+
+.header-font {
+    font-size: 18px;
+}
+
+.main-menu .logo {
+    height: 50px;
+}
+
+.navbar {
+    .nav-item{
+        margin: unset;
+    }
+
+    .avatar-logo {
+        width: 50px;
+    }
+
+    .user-info-container {
+        position: absolute;
+        top: 5px;
+        right: 0;
+    }
+
+    input[name="search"] {
+        height: 30px;
+    }
+}

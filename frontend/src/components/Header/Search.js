@@ -17,7 +17,7 @@ export default class Search extends Component {
   render() {
     return (
       <div className="d-flex">
-        <button className="btn-search  d-flex" onClick={this.toggleOpen}>
+        <button className="btn-search  d-flex pl-0" onClick={this.toggleOpen}>
           <link
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
             rel="stylesheet"
@@ -27,7 +27,7 @@ export default class Search extends Component {
         {this.state.isOpen && (
           <form className="d-flex align-items-center">
             <div className="search-box">
-              <input className="w-75" type="text" name="search" />
+              <input className="form-control" type="text" name="search" />
             </div>
           </form>
         )}

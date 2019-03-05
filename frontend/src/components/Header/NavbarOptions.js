@@ -5,34 +5,64 @@ import { forbidExtraProps } from 'airbnb-prop-types';
 import Search from 'components/Header/Search';
 
 export default function NavbarOptions(props) {
-  return (
-    <ul className="navbar-nav mr-auto flex-column flex-sm-row">
-      <li className="nav-item active">
-        <Link className="navbar-brand" to="/companies">
-          Companies
-        </Link>
-      </li>
-      <li className="nav-item active">
-        <Link className="navbar-brand" to="/about">
-          About Us
-        </Link>
-      </li>
-      <li className="nav-item active">
+  const search =
+    <li className="navbar-brand d-flex align-content-center mr-auto">
+      <Search />
+    </li>;
+  const navItems = [
+    <li className="nav-item">
+      <Link className="navbar-brand" to="/companies">
+        Companies
+      </Link>
+    </li>,
+    <li className="nav-item">
+      <Link className="navbar-brand" to="/about">
+      About Us
+    </Link>
+    </li>,
+    <li className="nav-item">
         <Link className="navbar-brand" to="/news">
-          News
+        News
         </Link>
-      </li>
-      {props.isAuthenticated && (
-        <li className="nav-item active justify-content-end">
+    </li>
+  ];
+  if (props.isAuthenticated) {
+    Array.prototype.push.apply(
+      navItems,
+      [
+        <li className="nav-item">
           <Link className="navbar-brand" to="/bookmarks">
             My Bookmarks
           </Link>
+        </li>,
+        search
+      ]
+    );
+  } else {
+    Array.prototype.push.apply(
+      navItems,
+      [
+        search,
+        <li className="nav-item">
+          <Link className="navbar-brand" to="/register">
+            Sign Up
+          </Link>
+        </li>,
+        <li className="nav-item">
+          <Link className="navbar-brand" to="/login">
+          Sign In
+          </Link>
         </li>
-      )}
-      <li className="nav-item active d-flex align-content-center">
-        <Search />
-      </li>
-    </ul>
+      ]
+    );
+  }
+
+  return (
+    <div className="collapse navbar-collapse ml-3" id="navbarSupportedContent">
+      <ul className="navbar-nav mr-auto w-100">
+        {navItems}
+      </ul>
+    </div>
   );
 }
 

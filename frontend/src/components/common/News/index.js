@@ -17,7 +17,7 @@ export default function News(props) {
           <Button
             text="Learn more"
             size="small"
-            color="green"
+            color="blue"
             className="m-0 w-100 mt-3"
           />
         </a>
