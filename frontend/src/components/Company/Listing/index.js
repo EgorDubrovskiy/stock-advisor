@@ -43,32 +43,30 @@ class CompaniesListing extends React.Component {
         exchange,
         website,
         industryName,
-        issueTypeDescription,
         sectorName,
         price
       } = company;
 
       return {
-        symbol,
-        name: <Link to={`company/${symbol}`}>{name}</Link>,
-        description,
-        exchange,
-        website: (
+        сокращение: symbol,
+        название: <Link to={`company/${symbol}`}>{name}</Link>,
+        описание: description,
+        биржа: exchange,
+        сайт: (
           <a href={website} target="__blank">
             {website}
           </a>
         ),
-        industry: industryName,
-        'Issue Type': issueTypeDescription,
-        sector: sectorName,
-        price
+        индустрия: industryName,
+        сектор: sectorName,
+        цена: price
       };
     });
 
     const loading = this.props.company.allCompanies.loader;
     return (
       <div className="h-100 overflow-auto">
-        <h1 align="center">All Companies</h1>
+        <h1 align="center">Все компании</h1>
         <Pagination
           onClickHandler={this.onClickHandler}
           total={this.props.company.allCompanies.total}

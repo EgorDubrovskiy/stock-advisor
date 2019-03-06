@@ -32,7 +32,7 @@ export default function Pagination(props) {
           <button
             className="page-link"
             onClick={props.onClickHandler(prevPageNumber)}>
-            Previous
+            Назад
           </button>
         </li>
         {paginationItems}
@@ -40,7 +40,7 @@ export default function Pagination(props) {
           <button
             className="page-link"
             onClick={props.onClickHandler(nextPageNumber)}>
-            Next
+            Вперёд
           </button>
         </li>
       </ul>
