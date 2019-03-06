@@ -41,7 +41,7 @@ class Header extends React.Component {
               className="logout-button"
               onClick={ this.logoutUser(this.props.history) }
             >
-              Logout
+              Выйти
             </button>
             <Link to="/profile">
               <img
