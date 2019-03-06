@@ -22,15 +22,15 @@ export default class CompanyInfo extends React.Component {
                     this.props.company.symbol
                   })`}
                 </div>
-                <div className="col-12">CEO: {this.props.company.CEO} </div>
+                <div className="col-12">Исполнительный директор: {this.props.company.CEO} </div>
                 <div className="col-12">
-                  Industry: {this.props.company.industry}
+                  Индустрия: {this.props.company.industry}
                 </div>
                 <div className="col-12">
-                  Sector: {this.props.company.sector}
+                  Сектор: {this.props.company.sector}
                 </div>
                 <div className="col-12 stock-cost">
-                  {`${this.props.company.price} USD`}
+                  {`${this.props.company.price} $`}
                 </div>
                 <div className="col-md-12 my-1">
                   <BookmarkButton
@@ -68,7 +68,7 @@ export default class CompanyInfo extends React.Component {
           <div className="col-3" />
           <div className="col-6">
             <div className="col-12 border-bottom comp-news-text mt-3">
-              News for {this.props.company.symbol}
+              Новости для {this.props.company.symbol}
             </div>
             <div className="col-12">
               <ul className="col-12 mt-2 list">
@@ -82,7 +82,7 @@ export default class CompanyInfo extends React.Component {
               </ul>
             </div>
             <div className="col-12 news-link-text mt-2 text-right">
-              <Link to="/news">More news</Link>
+              <Link to="/news">Больше новостей</Link>
             </div>
           </div>
           <div className="col-3" />
