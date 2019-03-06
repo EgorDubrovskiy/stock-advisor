@@ -87,7 +87,7 @@ class CompanyService implements CompanyInterface
             )
             ->setBindings([$dateFrom, $dateTo])
             ->select(
-                'companies.symbol AS аббревиатура',
+                'companies.symbol AS сокращение',
                 'companies.name AS название',
                 'sectors.name AS сектор',
                 'industries.name AS индустрия',
