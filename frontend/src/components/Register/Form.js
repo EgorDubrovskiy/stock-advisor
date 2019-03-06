@@ -18,12 +18,12 @@ export default function Form(props) {
       className="mt-4 offset-sm-2 offset-md-3 offset-lg-4 col-sm-8 col-md-6 col-lg-4 border"
     >
       <div className="offset-md-1 col-sm-10">
-        <div className="mt-4 mb-4 basic-font">Registration</div>
+        <div className="mt-4 mb-4 basic-font">Регистрация</div>
         <Input
           onChange={props.handleChange}
           onBlur={props.handleBlur}
           value={props.values.login}
-          label="Enter login"
+          label="Введите логин"
           name="login"
           className="basic-font"
           errors={errors.login}
@@ -33,7 +33,7 @@ export default function Form(props) {
           onChange={props.handleChange}
           onBlur={props.handleBlur}
           value={props.values.email}
-          label="Enter email"
+          label="Введите email"
           name="email"
           type="email"
           className="basic-font"
@@ -44,7 +44,7 @@ export default function Form(props) {
           onChange={props.handleChange}
           onBlur={props.handleBlur}
           value={props.values.password}
-          label="Enter password"
+          label="Введите пароль"
           name="password"
           type="password"
           className="basic-font"
@@ -55,13 +55,13 @@ export default function Form(props) {
           onChange={props.handleChange}
           onBlur={props.handleBlur}
           value={props.values.passwordConfirm}
-          label="Confirm password"
+          label="Подтвердите пароль"
           name="password_confirmation"
           type="password"
           className="basic-font"
           required
         />
-        <Button text={props.sending ? 'Sending' : 'Sign Up'} className="w-100" type="submit" />
+        <Button text={props.sending ? 'Загрузка' : 'Зарегистрироваться'} className="w-100" type="submit" />
       </div>
     </form>
   );
