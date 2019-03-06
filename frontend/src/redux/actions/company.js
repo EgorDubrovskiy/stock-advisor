@@ -128,7 +128,7 @@ export const getTopCompanies = () => dispatch => {
       dispatch({ type: GET_TOP_COMPANIES, payload: response.data.companies });
       const symbols = response.data.companies
         .slice(0, newsConstants.page.home.countItems)
-        .map(company => company.symbol)
+        .map(company => company.аббревиатура)
         .join(',');
 
       dispatch(getCompanyNews(symbols));
