@@ -11,7 +11,7 @@ export default class CompanyInfo extends React.Component {
 
   render() {
     return (
-      <div className="container py-1 px-2">
+      <div className="container py-1 px-2 mt-3">
         <div className="row justify-content-md-center">
           <div className="col-3" />
           <div className="col-6 border border-success rounded">
