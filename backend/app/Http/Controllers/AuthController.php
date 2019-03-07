@@ -19,7 +19,7 @@ class AuthController extends Controller
         $ttl = request()->has('remember') ? config('jwt.rememberMeTokenExpireTime') : config('jwt.ttl');
 
         if (! $token = auth()->setTTL($ttl)->attempt($credentials)) {
-            return response()->json(['error' => 'Incorrect email or password'], 401);
+            return response()->json(['error' => 'Неверный email или пароль!'], 401);
         }
         $this->response->data = ['Token' => $token, 'Message' => 'Authorized'];
 

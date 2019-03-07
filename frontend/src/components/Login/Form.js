@@ -14,11 +14,11 @@ export default function Form(props) {
       onSubmit={props.handleSubmit}
       className="mt-4 offset-sm-2 offset-md-3 offset-lg-4 col-sm-8 col-md-6 col-lg-4 border">
       <div className="offset-md-1 col-sm-10">
-        <div className="mt-4 mb-4 basic-font">Login</div>
+        <div className="mt-4 mb-4 basic-font">Вход</div>
         <Input
           onChange={props.handleChange}
           onBlur={props.handleBlur}
-          label="Enter email"
+          label="Введите email"
           name="email"
           className="basic-font"
           required
@@ -26,7 +26,7 @@ export default function Form(props) {
         <Input
           onChange={props.handleChange}
           onBlur={props.handleBlur}
-          label="Enter password"
+          label="Введите пароль"
           name="password"
           type="password"
           className="basic-font"
@@ -35,13 +35,13 @@ export default function Form(props) {
         <Checkbox
           onChange={props.handleChange}
           onBlur={props.handleBlur}
-          label="Remember Me"
+          label="Запомнить меня"
           name="remember"
         />
         {props.error.login && <MessageBox type="danger" text={props.error.login} />}
-        <Button text={props.sending ? 'Sending' : 'Login'} className="w-100" type="submit" />
+        <Button text={props.sending ? 'Загрузка' : 'Войти'} className="w-100" type="submit" />
         <div className="mb-3 link-green">
-          <Link to="password-recovery/send">Forgot password?</Link>
+          <Link to="password-recovery/send">Забыли пароль?</Link>
         </div>
       </div>
     </form>
