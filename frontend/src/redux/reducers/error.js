@@ -3,7 +3,8 @@ import { ERROR, UNSET_ERROR } from '../actions/types';
 const initialState = {
   saveUserAvatar: {},
   updateUser: {},
-  passwordRecovery: {}
+  passwordRecovery: {},
+  validateToken: {}
 };
 
 export default function(state = initialState, action) {

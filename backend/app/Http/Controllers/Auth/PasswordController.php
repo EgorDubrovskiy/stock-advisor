@@ -50,7 +50,7 @@ class PasswordController extends Controller
         $passwordReset = PasswordReset::where('token', $token)->first();
 
         if (!$passwordReset) {
-            $this->response->error['token'] = 'This password reset token is not found.';
+            $this->response->error['token'] = 'Токен не найден!';
             return new JsonResponse($this->response, JsonResponse::HTTP_NOT_FOUND);
         }
 
@@ -60,7 +60,7 @@ class PasswordController extends Controller
             PasswordReset::where([
                 ['token', $token],
             ])->delete();
-            $this->response->error['token'] = 'This password reset token is invalid.';
+            $this->response->error['token'] = 'Невалидный токен!';
             return new JsonResponse($this->response, JsonResponse::HTTP_NOT_FOUND);
         }
 

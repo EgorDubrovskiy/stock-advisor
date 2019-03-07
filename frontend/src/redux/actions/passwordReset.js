@@ -21,7 +21,7 @@ export const sendToken = (history, email) => dispatch => {
     });
 };
 
-export const validateToken = (history, userData, setErrors) => dispatch => {
+export const validateToken = (history, userData) => dispatch => {
   return request('GET', `api/password/find/${userData.token}`)
     .then(response => {
       const [responseData] = response.data;
@@ -29,9 +29,10 @@ export const validateToken = (history, userData, setErrors) => dispatch => {
       history.push('reset');
     })
     .catch(err => {
+      const error = err.response.data.error;
       dispatch({
         type: ERROR,
-        payload: err
+        payload: {validateToken: error}
       });
     });
 };
