@@ -4,7 +4,8 @@ const initialState = {
   saveUserAvatar: {},
   updateUser: {},
   passwordRecovery: {},
-  validateToken: {}
+  validateToken: {},
+  resetPassword: {},
 };
 
 export default function(state = initialState, action) {

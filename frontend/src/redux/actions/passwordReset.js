@@ -37,16 +37,17 @@ export const validateToken = (history, userData) => dispatch => {
     });
 };
 
-export const resetPassword = (history, values, setErrors) => dispatch => {
+export const resetPassword = (history, values) => dispatch => {
   return request('POST', 'api/password/reset', values)
     .then(() => {
       dispatch(resetRemove());
       history.push('/login');
     })
     .catch(err => {
+      const errors = err.response.data.errors;
       dispatch({
         type: ERROR,
-        payload: err
+        payload: {resetPassword: errors}
       });
     });
 };
