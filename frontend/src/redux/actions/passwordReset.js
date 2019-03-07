@@ -6,16 +6,17 @@ import {
   PASSWORD_RESET_REMOVE
 } from './types';
 
-export const sendToken = (history, email, setErrors) => dispatch => {
+export const sendToken = (history, email) => dispatch => {
   return request('POST', 'api/password/send', email)
     .then(() => {
       dispatch(setResetEmail(email));
       history.push('validate');
     })
     .catch(err => {
+      const error = err.response.data.errors;
       dispatch({
         type: ERROR,
-        payload: err
+        payload: {passwordRecovery: error}
       });
     });
 };
