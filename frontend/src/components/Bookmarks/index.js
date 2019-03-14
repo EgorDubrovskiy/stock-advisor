@@ -17,50 +17,47 @@ class Bookmarks extends React.Component {
   }
 
   render() {
-    if (!this.props.user.isAuthenticated) {
-      return <h2>Please login to see your bookmarks</h2>;
-    }
-
     if (this.props.bookmarks.loader) {
       return <Loading className="absolute-center" />;
     }
 
     if (this.props.bookmarks.list.length) {
       const rows = this.props.bookmarks.list.map(bookmark => {
-        const { symbol, exchange } = bookmark.company;
-        const name = (
+        const Сокращение = bookmark.company.symbol;
+        const биржа = bookmark.company.exchange;
+        const имя = (
           <Link to={`company/${bookmark.company.symbol}`}>
             {bookmark.company.name || bookmark.company.companyName}
           </Link>
         );
-        const website = (
+        const сайт = (
           <a href={bookmark.company.website} target="__blank">
             {bookmark.company.website}
           </a>
         );
-        const price =
-          this.props.bookmarks.prices[symbol] || bookmark.company.price;
-        const remove = (
+        const цена =
+          this.props.bookmarks.prices[Сокращение] || bookmark.company.price;
+        const удалить = (
           <Link
             to="/bookmarks"
             onClick={this.deleteBookmark(bookmark.company_id)}>
-            Delete from Bookmarks
+            Удалить из закладок
           </Link>
         );
         return {
-          symbol,
-          name,
-          exchange,
-          website,
-          price,
-          remove
+          Сокращение,
+          имя,
+          биржа,
+          сайт,
+          цена,
+          удалить
         };
       });
 
       return <Table rows={rows} className="offset-md-1 col-sm-10" />;
     }
 
-    return <h2 align="center">You have no bookmarks yet</h2>;
+    return <h2 align="center">Вы не добавили ни одной компании в закладки!</h2>;
   }
 }
 
