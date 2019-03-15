@@ -12,17 +12,17 @@ export default function NavbarOptions(props) {
   const navItems = [
     <li className="nav-item">
       <Link className="navbar-brand" to="/companies">
-        Companies
+        Компании
       </Link>
     </li>,
     <li className="nav-item">
       <Link className="navbar-brand" to="/about">
-      About Us
+      О нас
     </Link>
     </li>,
     <li className="nav-item">
         <Link className="navbar-brand" to="/news">
-        News
+        Новости
         </Link>
     </li>
   ];
@@ -32,7 +32,7 @@ export default function NavbarOptions(props) {
       [
         <li className="nav-item">
           <Link className="navbar-brand" to="/bookmarks">
-            My Bookmarks
+            Закладки
           </Link>
         </li>,
         search
@@ -45,12 +45,12 @@ export default function NavbarOptions(props) {
         search,
         <li className="nav-item">
           <Link className="navbar-brand" to="/register">
-            Sign Up
+            Регистрация
           </Link>
         </li>,
         <li className="nav-item">
           <Link className="navbar-brand" to="/login">
-          Sign In
+            Вход
           </Link>
         </li>
       ]

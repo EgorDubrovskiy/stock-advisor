@@ -42,11 +42,12 @@ class UpdateUserRequest extends FormRequest
     public function messages()
     {
         return [
-            'unique' => 'The :attribute must be unique',
-            'regex' => 'The :attribute value is incorrect.',
-            'login.max' => 'The :attribute must be equal or less than 24 chars',
-            'email.max' => 'The :attribute must be equal or less than 124 chars',
-            'password.min' => 'The :attribute must be equal or more than 8 chars',
+            'login.max' => 'Логин должен быть не более 24 символов!',
+            'email.max' => 'Email должен содержать менее 124 символов!',
+            'email.unique' => 'Пользователь с таким email уже существует!',
+            'password.min' => 'Пароль должен содержать не менее 8 символов!',
+            'regex' => 'Некорректное значение поля!',
+            'email' => 'Некорректное значение email!',
         ];
     }
 }

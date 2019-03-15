@@ -36,10 +36,10 @@ class UserAvatarRequest extends FormRequest
     public function messages()
     {
         return [
-            'avatar.required' => 'The avatar file is not present in the request',
-            'avatar.file' => 'The avatar must be a successfully uploaded file',
-            'avatar.mimes' => 'The :attribute must have png or jpeg file extension',
-            'avatar.max' => 'The :attribute must be equal or less than 2 mb',
+            'avatar.required' => 'Изображение должно быть указано!',
+            'avatar.file' => 'Аватар должен быть файлом!',
+            'avatar.mimes' => 'Файл должен иметь png или jpeg расширение!',
+            'avatar.max' => 'Размер файла не должен превышать 2 мегабайта!',
         ];
     }
 }

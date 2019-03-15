@@ -7,16 +7,15 @@ export default function BookmarkButton(props) {
   }
 
   if (!props.isAuthenticated) {
-    return (
-      <div className="border">Please sign in to save company to bookmarks</div>
-    );
+    return null;
   }
+
   const companyIsInBookmarks = props.bookmarks.some(
     bookmark => bookmark.company_id === props.companyId
   );
   if (companyIsInBookmarks) {
     return (
-      <div className="border bg-green">Company is saved to your bookmarks</div>
+      <div className="border bg-green">Компания сохранена в ваших закладках</div>
     );
   }
 
@@ -24,7 +23,7 @@ export default function BookmarkButton(props) {
     <button
       className="rounded bt-bg-color bt-font"
       onClick={props.addBookmark(props.companyId)}>
-      Add to bookmarks
+      Добавить в закладки
     </button>
   );
 }

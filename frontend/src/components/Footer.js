@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
     <footer className="page-footer mt-3 d-flex position-absolute w-100 bg-green justify-content-between">
       <span className="align-items-center d-flex ml-3">
-        Stock market website
+        Сайт фондового рынка
       </span>
       <ul className="d-flex align-items-center list-unstyled mb-0 mr-3">
         <li>

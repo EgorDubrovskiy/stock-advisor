@@ -6,21 +6,22 @@ import {
   PASSWORD_RESET_REMOVE
 } from './types';
 
-export const sendToken = (history, email, setErrors) => dispatch => {
+export const sendToken = (history, email) => dispatch => {
   return request('POST', 'api/password/send', email)
     .then(() => {
       dispatch(setResetEmail(email));
       history.push('validate');
     })
     .catch(err => {
+      const error = err.response.data.errors;
       dispatch({
         type: ERROR,
-        payload: err
+        payload: {passwordRecovery: error}
       });
     });
 };
 
-export const validateToken = (history, userData, setErrors) => dispatch => {
+export const validateToken = (history, userData) => dispatch => {
   return request('GET', `api/password/find/${userData.token}`)
     .then(response => {
       const [responseData] = response.data;
@@ -28,23 +29,25 @@ export const validateToken = (history, userData, setErrors) => dispatch => {
       history.push('reset');
     })
     .catch(err => {
+      const error = err.response.data.error;
       dispatch({
         type: ERROR,
-        payload: err
+        payload: {validateToken: error}
       });
     });
 };
 
-export const resetPassword = (history, values, setErrors) => dispatch => {
+export const resetPassword = (history, values) => dispatch => {
   return request('POST', 'api/password/reset', values)
     .then(() => {
       dispatch(resetRemove());
       history.push('/login');
     })
     .catch(err => {
+      const errors = err.response.data.errors;
       dispatch({
         type: ERROR,
-        payload: err
+        payload: {resetPassword: errors}
       });
     });
 };

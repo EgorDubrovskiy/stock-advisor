@@ -71,7 +71,8 @@ class Profile extends Component {
                     <Button
                       onClick={this.handleClickOpen}
                       size="small"
-                      text="Edit profile"
+                      className="w-100"
+                      text="Редактировать"
                     />
                   </div>
                   {this.state.isModalOpened && (
@@ -82,7 +83,7 @@ class Profile extends Component {
                       maxWidth="sm"
                       aria-labelledby="form-dialog-title">
                       <DialogTitle className="text-center ">
-                        Edit profile
+                        Редактирование профиля
                       </DialogTitle>
                       <Formik
                         onSubmit={(values) => {
@@ -103,12 +104,12 @@ class Profile extends Component {
                 </div>
               </div>
               <div className="col-md-2">
-                <div className="text-center">Login</div>
-                <div className="text-center">Email</div>
+                <div>Логин:</div>
+                <div>Email:</div>
               </div>
               <div className="col-md-4">
-                <div className="text-center">{login}</div>
-                <div className="text-center">{email}</div>
+                <div>{login}</div>
+                <div>{email}</div>
               </div>
             </div>
           </div>

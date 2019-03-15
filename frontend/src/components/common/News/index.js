@@ -15,7 +15,7 @@ export default function News(props) {
         </Dotdotdot>
         <a href={data.url} className="w-100 mt-3" target="_blank">
           <Button
-            text="Learn more"
+            text="Подробнее"
             size="small"
             color="blue"
             className="m-0 w-100 mt-3"

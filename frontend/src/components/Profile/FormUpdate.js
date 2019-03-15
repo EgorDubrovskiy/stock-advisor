@@ -21,7 +21,7 @@ export default function FormUpdate(props) {
             onChange={props.handleChange}
             onBlur={props.handleBlur}
             autoFocus
-            label="login"
+            label="логин"
             name="login"
             defaultValue={props.values.login}
             className="basic-font"
@@ -44,7 +44,7 @@ export default function FormUpdate(props) {
               props.setFieldValue('avatar', event.currentTarget.files[0]);
             }}
             handleBlur={props.handleBlur}
-            text="Choose a profile picture"
+            text="Выберите изображение для профиля"
             size="small"
             className="text-uppercase"
             errors={errors.avatar}
@@ -57,14 +57,14 @@ export default function FormUpdate(props) {
             onClick={props.handleClose}
             color="green"
             size="small"
-            text="Cancel"
+            text="Закрыть"
           />
         </div>
         <div className="pr-3">
           <Button
             color="green"
             size="small"
-            text={props.sending ? 'Sending' : 'Save changes'}
+            text={props.sending ? 'Загрузка' : 'Сохранить изменения'}
             type="submit"
           />
         </div>

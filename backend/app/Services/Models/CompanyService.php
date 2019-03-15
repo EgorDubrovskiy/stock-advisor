@@ -87,11 +87,11 @@ class CompanyService implements CompanyInterface
             )
             ->setBindings([$dateFrom, $dateTo])
             ->select(
-                'companies.symbol',
-                'companies.name',
-                'sectors.name AS sector name',
-                'industries.name AS industry name',
-                'avg_prices.price'
+                'companies.symbol AS сокращение',
+                'companies.name AS название',
+                'sectors.name AS сектор',
+                'industries.name AS индустрия',
+                'avg_prices.price AS цена'
             )
             ->orderBy('price', 'DESC')
             ->limit($limit);

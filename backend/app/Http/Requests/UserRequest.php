@@ -6,6 +6,9 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
 {
+    /** @var string RUSSIAN_ALPHABET */
+    const RUSSIAN_ALPHABET = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ';
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -24,7 +27,7 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'login' => 'bail|required|regex:/^[a-zA-Z0-9]+$/|max:24|unique:users',
+            'login' => 'bail|required|regex:/^[a-zA-Z' . self::RUSSIAN_ALPHABET . '0-9]+$/|max:24|unique:users',
             'password' => 'bail|required|regex:/^[a-zA-Z0-9]+$/|min:8',
             'email' => 'bail|required|max:124|email|unique:users',
         ];
@@ -38,11 +41,14 @@ class UserRequest extends FormRequest
     public function messages()
     {
         return [
-            'required' => 'The :attribute must be required!',
-            'password.min' => 'The :attribute must be at least 8 symbols.',
-            'email.max' => 'The :attribute must be less than 124 symbols.',
-            'regex' => 'The :attribute value is incorrect.',
-            'email.unique' => 'The :attribute must be unique',
+            'login.required' => 'Логин должен быть указан!',
+            'login.max' => 'Логин должен быть не более 24 символов!',
+            'email.required' => 'Логин должен быть указан!',
+            'email.max' => 'Email должен содержать менее 124 символов!',
+            'email.unique' => 'Пользователь с таким email уже существует!',
+            'password.required' => 'Пароль должен быть указан!',
+            'password.min' => 'Пароль должен содержать не менее 8 символов!',
+            'regex' => 'Некорректное значение поля!',
         ];
     }
 }
