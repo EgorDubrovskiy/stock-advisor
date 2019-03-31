@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\DomainServices\ClientContainer;
+use App\Http\Requests\AvgPriceRequest;
+use App\Interfaces\Services\PriceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
@@ -45,5 +47,26 @@ class PriceController extends Controller
         }
         $this->response->data = $prices;
         return new JsonResponse($this->response);
+    }
+
+    /**
+     * @param AvgPriceRequest $request
+     * @param PriceInterface $priceService
+     * @return JsonResponse
+     */
+    public function getAvg(AvgPriceRequest $request, PriceInterface $priceService) : JsonResponse
+    {
+        $years = $request->get('years');
+        $months = $request->get('months');
+        $symbols = $request->get('symbols');
+
+        if (!is_null($months) && count($years) != count($months)) {
+            $this->response->error = 'Count of years must be equals count of months';
+            return new JsonResponse($this->response, JsonResponse::HTTP_BAD_REQUEST);
+        }
+
+        $this->response->data =  $priceService->getAvgPrices($symbols, $years, $months);
+
+        return new JsonResponse($this->response, JsonResponse::HTTP_OK);
     }
 }

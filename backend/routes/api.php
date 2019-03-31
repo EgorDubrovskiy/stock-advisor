@@ -29,6 +29,9 @@ Route::middleware('cors')->group(function () {
 
     Route::prefix('prices')->group(function () {
         Route::get('', 'PriceController@getPrice');
+
+        Route::get('avg', 'PriceController@getAvg')
+            ->middleware('string.array');
     });
 
     Route::middleware('auth')->group(function () {

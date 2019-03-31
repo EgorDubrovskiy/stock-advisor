@@ -4,6 +4,7 @@ import userReducer from './user';
 import bookmarksReducer from './bookmarks';
 import companyReducer from './company';
 import passwordResetReducer from './passwordReset';
+import priceReducer from './price';
 import errorReducer from './error';
 
 export default combineReducers({
@@ -12,5 +13,6 @@ export default combineReducers({
   passwordReset: passwordResetReducer,
   company: companyReducer,
   error: errorReducer,
-  bookmarks: bookmarksReducer
+  bookmarks: bookmarksReducer,
+  price: priceReducer,
 });
