@@ -41,8 +41,11 @@ class Home extends Component {
       (row, index) => ({ '#': index + 1, ...row })
     );
     const countNews = newsConstants.page.home.countItems;
-    const loading = news.loader || topCompanies.loader;
+    const loading = news.loader || topCompanies.loader || avgPrices.loader;
 
+    if (loading) {
+      return <Loading className="absolute-center"/>;
+    }
     return (
       <div className="container-fluid pt-3">
         <div className="row">
