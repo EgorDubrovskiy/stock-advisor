@@ -23,7 +23,7 @@ class PriceService implements PriceInterface
     public function getAvgPrices(array $symbols, array $years, array $months = null) : Collection
     {
         /** @var Builder $prices */
-        $prices = Company::select('name');
+        $prices = Company::select('symbol');
 
         for ($i = 0; $i < count($years); $i++) {
             $tableAvgPrices = $i . 'avg_prices' . $years[$i] . (is_null($months) ? '' : '_' . $months[$i]);
