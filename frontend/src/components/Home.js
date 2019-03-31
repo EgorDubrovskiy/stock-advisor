@@ -3,20 +3,40 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getTopCompanies } from 'redux/actions/company';
+import { getAvgPrices } from 'redux/actions/price';
 import { news as newsConstants } from 'constants/js/countItems';
 import NewsList from 'components/common/NewsList';
 import Table from 'components/common/Table';
 import Loading from 'components/common/Loading';
+import { getLastYears } from 'utils/date';
+import { Chart } from 'react-google-charts';
 
 class Home extends Component {
   constructor(props) {
     super(props);
 
-    this.props.getTopCompanies();
+    this.state = {years: getLastYears(5)};
+
+    this.props.getTopCompanies().then(() => {
+      let symbols = this.props.companiesData.topCompanies.items.map(
+        (row) => (row.сокращение)
+      );
+
+      this.props.getAvgPrices(symbols, this.state.years.toString());
+    });
   }
 
   render() {
     const { news, topCompanies } = this.props.companiesData;
+    let avgPrices = this.props.priceData;
+    if (!avgPrices.avg.loader) {
+      avgPrices = avgPrices.avg.items.map((avgPrice) => (
+        Object.values(avgPrice)
+      ));
+      let headers =[...this.state.years.map((year) => (year.toString()))];
+      headers.unshift('Название');
+      avgPrices.unshift(headers);
+    }
     const companiesListingItems = topCompanies.items.map(
       (row, index) => ({ '#': index + 1, ...row })
     );
@@ -48,6 +68,34 @@ class Home extends Component {
             />
           </div>
         </div>
+        {
+          !avgPrices.loader && (
+            <div className="row p-3">
+              <div className="card col-12">
+                <Chart
+                  width={'100%'}
+                  height={'800px'}
+                  chartType="BarChart"
+                  loader={null}
+                  data={avgPrices}
+                  options={{
+                    title: 'Стоимость акций за последние 5 лет',
+                    chartArea: { width: '50%' },
+                    hAxis: {
+                      title: 'Средняя цена на акцию за год',
+                      minValue: 0,
+                    },
+                    vAxis: {
+                      title: 'Компания',
+                    },
+                  }}
+                  // For tests
+                  rootProps={{ 'data-testid': '1' }}
+                />
+              </div>
+            </div>
+          )
+        }
       </div>
     );
   }
@@ -56,17 +104,18 @@ class Home extends Component {
 Home.propTypes = {
   getTopCompanies: PropTypes.func,
   companiesData: PropTypes.object,
-
 };
 
 function mapStateToProps(state) {
   return {
-    companiesData: state.company
+    companiesData: state.company,
+    priceData: state.price,
   };
 }
 
 const mapDispatchToProps = {
-  getTopCompanies
+  getTopCompanies,
+  getAvgPrices
 };
 
 export default connect(

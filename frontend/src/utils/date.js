@@ -6,7 +6,7 @@ export function getLastYears(n) {
     years.push(year)
   }
 
-  return years.toString();
+  return years;
 }
 
 export function getLastMonths(n) {
@@ -30,7 +30,7 @@ export function getLastMonths(n) {
   }
 
   return {
-    'years': years.toString(),
-    'months': months.toString(),
+    'years': years,
+    'months': months,
   };
 }
