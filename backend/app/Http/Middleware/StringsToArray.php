@@ -12,6 +12,7 @@ class StringsToArray extends TransformsRequest
     protected $available = [
         'years',
         'months',
+        'symbols',
     ];
 
     /**

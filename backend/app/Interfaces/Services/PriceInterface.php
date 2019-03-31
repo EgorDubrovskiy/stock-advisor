@@ -11,9 +11,10 @@ use Illuminate\Database\Eloquent\Collection;
 interface PriceInterface
 {
     /**
+     * @param array $symbols
      * @param array $years
      * @param array|null $months
      * @return Collection
      */
-    public function getAvgPrices(array $years, array $months = null) : Collection;
+    public function getAvgPrices(array $symbols, array $years, array $months = null) : Collection;
 }

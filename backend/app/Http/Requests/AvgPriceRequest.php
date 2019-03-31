@@ -24,6 +24,7 @@ class AvgPriceRequest extends FormRequest
     public function rules()
     {
         return [
+            'symbols' => 'required|array',
             'years' => 'required|array',
             'years.*' => 'numeric',
             'months' => 'nullable|array',

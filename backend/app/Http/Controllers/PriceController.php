@@ -58,13 +58,18 @@ class PriceController extends Controller
     {
         $years = $request->get('years');
         $months = $request->get('months');
+        $symbols = $request->get('symbols');
 
+        if (count($symbols) !== count($years)) {
+            $this->response->error = 'Count of years must be equals count of symbols';
+            return new JsonResponse($this->response, JsonResponse::HTTP_BAD_REQUEST);
+        }
         if (!is_null($months) && count($years) != count($months)) {
             $this->response->error = 'Count of years must be equals count of months';
             return new JsonResponse($this->response, JsonResponse::HTTP_BAD_REQUEST);
         }
 
-        $this->response->data =  $priceService->getAvgPrices($years, $months);
+        $this->response->data =  $priceService->getAvgPrices($symbols, $years, $months);
 
         return new JsonResponse($this->response, JsonResponse::HTTP_OK);
     }
