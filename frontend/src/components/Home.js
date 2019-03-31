@@ -34,7 +34,7 @@ class Home extends Component {
         Object.values(avgPrice)
       ));
       let headers =[...this.state.years.map((year) => (year.toString()))];
-      headers.unshift('Название');
+      headers.unshift('Сокращенное название компании');
       avgPrices.unshift(headers);
     }
     const companiesListingItems = topCompanies.items.map(
@@ -74,11 +74,11 @@ class Home extends Component {
         {
           !avgPrices.loader && (
             <div className="row p-3">
-              <div className="card col-12">
+              <div className="col-12 p-3">
                 <Chart
                   width={'100%'}
-                  height={'800px'}
-                  chartType="BarChart"
+                  height={'500px'}
+                  chartType="Bar"
                   loader={null}
                   data={avgPrices}
                   options={{
