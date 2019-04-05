@@ -10,35 +10,53 @@ import {
   getCompanyNews
 } from 'redux/actions/company';
 import { addBookmark } from 'redux/actions/bookmarks';
-import { getAvgPrices } from 'redux/actions/price';
+import { getAvgPrices, getAvgPricesByMonths } from 'redux/actions/price';
 import { Chart } from 'react-google-charts';
-import { getLastYears } from 'utils/date';
+import { getLastYears, getLastMonths } from 'utils/date';
+import { months as monthsNames } from 'constants/lang/ru/date';
 import Loading from 'components/common/Loading';
 
 class CompanyPage extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      years: getLastYears(5),
+      months: getLastMonths(5),
+    };
+
     this.props.removeCompany();
     const symbol = this.props.match.params.symbol;
     this.props.getCompany(symbol).then(() => {
       this.props.getAvgPrices(this.props.company.current.symbol, this.state.years.toString());
+      this.props.getAvgPricesByMonths(
+        this.props.company.current.symbol,
+        this.state.months.years.toString(),
+        this.state.months.months.toString()
+      );
     });
     this.props.getCompanyNews(symbol);
-
-    this.state = {years: getLastYears(5)};
   }
 
   render() {
-    let avgPrices = this.props.priceData;
+    let avgPricesByYears = this.props.priceData.avg;
+    let avgPricesByMonths = this.props.priceData.avgByMonths;
 
-    if (!avgPrices.avg.loader) {
-      avgPrices = avgPrices.avg.items.map((avgPrice) => (
+    if (!avgPricesByYears.loader && !avgPricesByMonths.loader) {
+      avgPricesByYears = avgPricesByYears.items.map((avgPrice) => (
         Object.values(avgPrice)
       ));
-      let headers =[...this.state.years.map((year) => (year.toString()))];
-      headers.unshift('Сокращенное название компании');
-      avgPrices.unshift(headers);
+      let headersForYearsDiagram =[...this.state.years.map((year) => (year.toString()))];
+      headersForYearsDiagram.unshift('Сокращенное название компании');
+      avgPricesByYears.unshift(headersForYearsDiagram);
+
+      avgPricesByMonths = avgPricesByMonths.items.map((avgPrice) => (
+        Object.values(avgPrice)
+      ));
+      let headersForMonthsDiagram =[...this.state.months.years.map((year, index) =>
+        (`${year.toString()} ${monthsNames[this.state.months.months[index] - 1]}`))];
+      headersForMonthsDiagram.unshift('Сокращенное название компании');
+      avgPricesByMonths.unshift(headersForMonthsDiagram);
 
       return (
         <div className="container-fluid">
@@ -60,16 +78,31 @@ class CompanyPage extends React.Component {
                 height={'400px'}
                 chartType="BarChart"
                 loader={null}
-                data={avgPrices}
+                data={avgPricesByYears}
                 options={{
                   title: 'Стоимость акций за последние 5 лет',
-                  chartArea: { width: '50%' },
+                  chartArea: { width: '70%' },
                   hAxis: {
                     title: 'Средняя цена на акцию за год',
                     minValue: 0,
                   },
                   vAxis: {
                     title: 'Компания',
+                  },
+                }}
+              />
+            </div>
+            <div className="col-12 p-3">
+              <Chart
+                width={'100%'}
+                height={'400px'}
+                chartType="Bar"
+                loader={null}
+                data={avgPricesByMonths}
+                options={{
+                  chart: {
+                    title: 'Стоимость акций за последние 5 месяцев',
+                    subtitle: 'Цена = средняя цена на акцию за месяц',
                   },
                 }}
               />
@@ -94,7 +127,8 @@ const mapDispatchToProps = {
   getCompanyNews,
   addBookmark,
   removeCompany,
-  getAvgPrices
+  getAvgPrices,
+  getAvgPricesByMonths,
 };
 
 export default connect(
