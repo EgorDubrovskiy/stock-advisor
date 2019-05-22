@@ -194,9 +194,9 @@ class CompanyService implements CompanyInterface
      * @param array $parameters
      * @param int $itemsCount
      * @param int $pageNumber
-     * @return Collection
+     * @return Builder
      */
-    public function search(array $parameters, int $itemsCount, int $pageNumber) : Collection
+    private function searchBuilder(array $parameters, int $itemsCount = null, int $pageNumber = null) : Builder
     {
         $date = date('Y-m-d');
         $queryAvgPrice =
@@ -230,6 +230,8 @@ class CompanyService implements CompanyInterface
             ->addBinding($date, 'select')
             ->havingRaw($queryAvgPrice . ' IS NOT NULL', [$date]);
 
+        $companies = Company::query()->fromSub($companies, 'companies');
+
         /** Adding search parameters to query */
         if (array_key_exists('search', $parameters)) {
             foreach ($parameters['search'] as $parameter) {
@@ -254,9 +256,33 @@ class CompanyService implements CompanyInterface
         }
 
         /** Adding pagination parameters to query */
-        $this->conditionsService->addPagination($companies, $itemsCount, $pageNumber);
+        if (!is_null($itemsCount) && !is_null($pageNumber)) {
+            $this->conditionsService->addPagination($companies, $itemsCount, $pageNumber);
+        }
 
-        return $companies->get();
+        return $companies;
+    }
+
+    /**
+     * @param array $parameters
+     * @param int $itemsCount
+     * @param int $pageNumber
+     * @return Collection
+     */
+    public function searchGet(array $parameters, int $itemsCount = null, int $pageNumber = null) : Collection
+    {
+        return $this->searchBuilder($parameters, $itemsCount, $pageNumber)->get();
+    }
+
+    /**
+     * @param array $parameters
+     * @param int $itemsCount
+     * @param int $pageNumber
+     * @return int
+     */
+    public function searchCount(array $parameters, int $itemsCount = null, int $pageNumber = null) : int
+    {
+        return $this->searchBuilder($parameters, $itemsCount, $pageNumber)->get()->count();
     }
 
     /**

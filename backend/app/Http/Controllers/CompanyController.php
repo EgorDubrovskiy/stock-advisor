@@ -131,7 +131,7 @@ class CompanyController extends Controller
 
         $parameters = is_null($parametersString) ? [] : json_decode($parametersString, true);
 
-        $this->response->data['companies'] = $companyService->search(
+        $this->response->data['companies'] = $companyService->searchGet(
             $parameters,
             $pagination['itemsCount'],
             $pagination['pageNumber']
@@ -182,13 +182,23 @@ class CompanyController extends Controller
     }
 
     /**
-     * @param ModelsCompanyService $service
+     * @param ModelsCompanyService $companyService
+     * @param Request $request
      * @return JsonResponse
      */
-    public function getTotalNumberOfCompanies(ModelsCompanyService $service) : JsonResponse
+    public function getTotalNumberOfCompanies(
+        ModelsCompanyService $companyService,
+        Request $request
+    ) : JsonResponse
     {
-        $total = $service->countAllCompanies();
+        $parametersString = $request->get('parameters');
+
+        $total = $companyService->searchCount(
+            is_null($parametersString) ? [] : json_decode($parametersString, true)
+        );
+
         $this->response->data['companiesTotal'] = $total;
+
         return new JsonResponse($this->response, JsonResponse::HTTP_OK);
     }
 }

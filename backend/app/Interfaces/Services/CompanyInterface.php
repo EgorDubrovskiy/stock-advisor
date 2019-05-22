@@ -36,5 +36,7 @@ interface CompanyInterface
      * @param int $pageNumber
      * @return Collection
      */
-    public function search(array $parameters, int $itemsCount, int $pageNumber) : Collection;
+    public function searchGet(array $parameters, int $itemsCount = null, int $pageNumber = null) : Collection;
+
+    public function searchCount(array $parameters, int $itemsCount = null, int $pageNumber = null) : int;
 }
