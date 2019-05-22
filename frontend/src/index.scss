@@ -17,6 +17,10 @@ body {
   font: $main-font
 }
 
+.main-menu a:hover {
+  text-decoration: underline;
+}
+
 .bg-dark-green {
   background-color: $bg-dark-green;
 }

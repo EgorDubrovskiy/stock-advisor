@@ -13,23 +13,58 @@ import { Link } from 'react-router-dom';
 import Loading from 'components/common/Loading';
 import Pagination from './pagination';
 import { itemsPerPage } from 'constants/js/common';
+import myrequest from 'utils/myrequest';
+import appConfig from 'config';
 
 class CompaniesListing extends React.Component {
+
   onClickHandler = pageNumber => () => {
-    this.props.getCompaniesTotal();
-    this.props.setCurrentPage(pageNumber);
+    let parameters = myrequest.get("parameters");
+
     this.props.getCompaniesList(
       itemsPerPage,
-      pageNumber
-    );
+      pageNumber,
+      parameters
+    ).then(() => {
+      this.props.getCompaniesTotal(parameters);
+    });
+
+    this.props.setCurrentPage(pageNumber);
+  };
+
+  searchHandler = (e) => {
+    e.preventDefault();
+
+    let sortSelect = document.getElementById('sortSelect');
+    let sortName = sortSelect.options[sortSelect.selectedIndex].getAttribute("name");
+
+    let searchSelect = document.getElementById('searchSelect');
+    let searchName = searchSelect.options[searchSelect.selectedIndex].getAttribute("name");
+
+    let searchValue = document.getElementById('searchInput').value;
+
+    let parameters = JSON.stringify({
+      "search": [{
+        "field": searchName, "value":searchValue, "parameter":"beginLike"
+      }],
+      "sorting": [{
+        "field": sortName, "parameter":"asc"
+      }]
+    });
+
+    window.location.replace(`${appConfig.frontEndUrl}/companies?parameters=${parameters}`);
   };
 
   componentDidMount() {
-    this.props.getCompaniesTotal();
+    let parameters = myrequest.get("parameters");
+
     this.props.getCompaniesList(
       itemsPerPage,
-      this.props.company.allCompanies.pageNumber
-    );
+      this.props.company.allCompanies.pageNumber,
+      parameters
+    ).then(() => {
+      this.props.getCompaniesTotal(parameters);
+    });
   }
 
   render() {
@@ -64,9 +99,59 @@ class CompaniesListing extends React.Component {
     });
 
     const loading = this.props.company.allCompanies.loader;
+    if (loading == true) {
+      return <Loading className="absolute-center" />;
+    }
+
+    if (this.props.company.allCompanies.list.length === 0) {
+      return <h1 align="center" className="w-100">Компании не найдены</h1>;
+    }
+
     return (
       <div className="h-100 overflow-auto">
         <h1 align="center">Все компании</h1>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-12 col-md-4">
+              <div className="form-group">
+                <label>Сортировка</label>
+                <select className="form-control" id="sortSelect">
+                  <option name="symbol">Сокращение</option>
+                  <option name="name">Название</option>
+                  <option name="description">Описание</option>
+                  <option name="exchange">Биржа</option>
+                  <option name="website">Сайт</option>
+                  <option name="industryName">Индустрия</option>
+                  <option name="sectorName">Сектор</option>
+                  <option name="price">Цена</option>
+                </select>
+              </div>
+            </div>
+            <div className="col-12 col-md-4">
+              <div className="form-group w-100">
+                <label>Поиск</label>
+                <select className="form-control" id="searchSelect">
+                  <option name="symbol">Сокращение</option>
+                  <option name="name">Название</option>
+                  <option name="description">Описание</option>
+                  <option name="exchange">Биржа</option>
+                  <option name="website">Сайт</option>
+                  <option name="industryName">Индустрия</option>
+                  <option name="sectorName">Сектор</option>
+                  <option name="price">Цена</option>
+                </select>
+              </div>
+            </div>
+            <div className="col-12 col-md-4">
+              <div className="form-group w-100">
+                <label>Введите искомое значение</label>
+                <form onSubmit={this.searchHandler}>
+                  <input type="text" className="form-control" id="searchInput" placeholder="Введите значение"/>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
         <Pagination
           onClickHandler={this.onClickHandler}
           total={this.props.company.allCompanies.total}

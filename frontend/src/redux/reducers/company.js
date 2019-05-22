@@ -46,7 +46,6 @@ export default function(state = initialState, action) {
         allCompanies: {
           ...state.allCompanies,
           list: action.payload,
-          loader: false
         }
       };
     case SET_COMPANY:
@@ -59,7 +58,8 @@ export default function(state = initialState, action) {
         ...state,
         allCompanies: {
           ...state.allCompanies,
-          total: action.payload
+          total: action.payload,
+          loader: false
         }
       };
     case SET_CURRENT_PAGE_NUMBER:

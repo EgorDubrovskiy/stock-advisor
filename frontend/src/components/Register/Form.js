@@ -61,7 +61,7 @@ export default function Form(props) {
           className="basic-font"
           required
         />
-        <Button text={props.sending ? 'Загрузка' : 'Зарегистрироваться'} className="w-100" type="submit" />
+        <Button text={props.sending ? 'Загрузка' : 'Готово'} className="w-100" type="submit" />
       </div>
     </form>
   );

@@ -74,6 +74,7 @@ class Home extends Component {
         {
           !avgPrices.loader && (
             <div className="row p-3">
+              <h3 align="center" className="w-100">Стоимость акций за последние 5 лет</h3>
               <div className="col-12 p-3">
                 <Chart
                   width={'100%'}
@@ -82,7 +83,7 @@ class Home extends Component {
                   loader={null}
                   data={avgPrices}
                   options={{
-                    title: 'Стоимость акций за последние 5 лет',
+                    title: '',
                     chartArea: { width: '50%' },
                     hAxis: {
                       title: 'Средняя цена на акцию за год',

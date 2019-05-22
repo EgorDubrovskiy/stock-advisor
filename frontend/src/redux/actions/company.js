@@ -27,11 +27,14 @@ export const getBookmarks = userId => {
   };
 };
 
-export const getCompaniesList = (itemsCount, pageNumber) => {
+export const getCompaniesList = (itemsCount, pageNumber, parameters = '{}') => {
+  parameters = parameters === null ? '{}' : parameters;
+
   return dispatch => {
     return request(
       'GET',
-      `api/companies/search?itemsCount=${itemsCount}&pageNumber=${pageNumber}`
+      `api/companies/search?itemsCount=${itemsCount}&pageNumber=${pageNumber}
+      &parameters=${parameters}`
     )
       .then(response => {
         const companies = response.data.companies;
@@ -46,9 +49,11 @@ export const getCompaniesList = (itemsCount, pageNumber) => {
   };
 };
 
-export const getCompaniesTotal = () => {
+export const getCompaniesTotal = (parameters = '{}') => {
+  parameters = parameters === null ? '{}' : parameters;
+
   return dispatch => {
-    return request('GET', 'api/companies/total')
+    return request('GET', `api/companies/total?parameters=${parameters}`)
       .then(response => {
         const total = response.data.companiesTotal;
         dispatch(setCompaniesTotal(total));
