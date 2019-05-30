@@ -19,7 +19,7 @@ class Header extends React.Component {
 
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-green p-0 main-menu">
-        <Link to="/home" className="bg-dark-green h-100  d-flex justify-content-center navbar-brand bg-dark-green mr-0">
+        <Link to="/home" className="h-100  d-flex justify-content-center navbar-brand bg-white mr-0">
           <img className="logo" src={logo} alt="Logo" />
         </Link>
         <button
