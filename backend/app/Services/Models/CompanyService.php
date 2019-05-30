@@ -199,18 +199,27 @@ class CompanyService implements CompanyInterface
     private function searchBuilder(array $parameters, int $itemsCount = null, int $pageNumber = null) : Builder
     {
         $date = date('Y-m-d');
-        $queryAvgPrice =
-                        '
-                            (
-                                SELECT AVG(prices.price) FROM prices
-                                WHERE DATE(prices.created_at) = ?
-                                AND prices.company_id = companies.id
-                            )
-                        ';
+
         /** @var Builder $companies */
         $companies = Company::leftJoin('industries', 'companies.industry_id', 'industries.id')
             ->leftJoin('issue_types', 'companies.issue_type_id', 'issue_types.id')
             ->leftJoin('sectors', 'companies.sector_id', 'sectors.id')
+            ->join(
+                DB::raw(
+                    '
+                        (
+                            SELECT AVG(prices.price) AS price, prices.company_id
+                            FROM prices
+                            WHERE prices.created_at BETWEEN ? AND ?
+                            GROUP BY company_id
+                        ) AS avg_prices
+                    '
+                ),
+                function($join)
+                {
+                    $join->on('companies.id', '=', 'avg_prices.company_id');
+                }
+            )
             ->select(
                 'companies.id',
                 'companies.ceo',
@@ -225,10 +234,10 @@ class CompanyService implements CompanyInterface
                 'industries.name AS industryName',
                 'issue_types.description AS issueTypeDescription',
                 'sectors.name AS sectorName',
-                DB::raw($queryAvgPrice . ' AS price')
+                'avg_prices.price'
             )
-            ->addBinding($date, 'select')
-            ->havingRaw($queryAvgPrice . ' IS NOT NULL', [$date]);
+            ->addBinding($date . ' 00:00:00', 'select')
+            ->addBinding($date . ' 23:59:59', 'select');
 
         $companies = Company::query()->fromSub($companies, 'companies');
 
