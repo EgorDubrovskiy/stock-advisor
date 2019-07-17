@@ -32,6 +32,8 @@ Route::middleware('cors')->group(function () {
 
         Route::get('avg', 'PriceController@getAvg')
             ->middleware('string.array');
+
+        Route::post('createForTest', 'PriceController@createForTest');
     });
 
     Route::middleware('auth')->group(function () {

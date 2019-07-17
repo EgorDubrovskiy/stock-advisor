@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.scss';
 
+//This component has information that describe this project
 export default function About() {
   return (
     <div className="container pt-3">

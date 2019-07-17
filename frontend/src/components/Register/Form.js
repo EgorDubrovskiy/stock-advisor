@@ -4,6 +4,7 @@ import Input from 'components/common/Input';
 import Button from 'components/common/Button';
 import './index.scss';
 
+//This component describe form for register user in system
 export default function Form(props) {
   const errors = {
       login: [],

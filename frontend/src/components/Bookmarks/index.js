@@ -8,6 +8,7 @@ import Table from 'components/common/Table';
 import { Link } from 'react-router-dom';
 import Loading from 'components/common/Loading';
 
+//This component is table that show list of bookmarks of user
 class Bookmarks extends React.Component {
   deleteBookmark = companyId => () =>
     this.props.deleteBookmark(this.props.user.userInfo.id, companyId);

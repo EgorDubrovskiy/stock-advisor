@@ -1,6 +1,7 @@
 import React from 'react';
 import Loading from 'components/common/Loading';
 
+//This component describe the button for save company to bookmarks
 export default function BookmarkButton(props) {
   if (props.loading) {
     return <Loading className="relative" />;

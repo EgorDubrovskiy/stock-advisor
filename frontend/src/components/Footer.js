@@ -1,5 +1,6 @@
 import React from 'react';
 
+//This component make Footer component from other components
 export default function Footer() {
   return (
     <footer className="page-footer mt-3 d-flex position-absolute w-100 bg-green justify-content-between">
@@ -10,7 +11,7 @@ export default function Footer() {
         <li>
           <a href="https://vk.com/id205914816" target="_blank">
             <img
-              src="https://img.icons8.com/ios/24/000000/vk.png"
+              src="https://img.icons8.com/ios/24/000000/vk-com.png"
               alt="Facebook"
             />
           </a>

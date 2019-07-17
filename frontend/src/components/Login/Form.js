@@ -8,6 +8,7 @@ import Button from 'components/common/Button';
 import MessageBox from 'components/common/MessageBox';
 import './index.scss';
 
+//This component describe form for input data for logging of user
 export default function Form(props) {
   return (
     <form

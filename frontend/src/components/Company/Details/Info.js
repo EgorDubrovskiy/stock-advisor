@@ -5,6 +5,7 @@ import BookmarkButton from './BookmarkButton';
 import { Link } from 'react-router-dom';
 import './Info.scss';
 
+//This component describe information block in company page
 export default class CompanyInfo extends React.Component {
   addBookmark = () => () =>
     this.props.addBookmark(this.props.userId, this.props.company);
@@ -30,7 +31,7 @@ export default class CompanyInfo extends React.Component {
                   Сектор: {this.props.company.sector}
                 </div>
                 <div className="col-12 stock-cost">
-                  {`${this.props.company.price} $`}
+                  {/*`${this.props.company.price} $`*/}
                 </div>
                 <div className="col-md-12 my-1">
                   <BookmarkButton
@@ -49,7 +50,7 @@ export default class CompanyInfo extends React.Component {
               </div>
             </div>
             <div className="row justify-content-md-center">
-              {this.props.company.tags.map((item, index) => (
+              {this.props.company.tags && this.props.company.tags.map((item, index) => (
                 <div className="col-3 my-1 d-flex" key={index}>
                   <button
                     className="btn btn-light rounded bt-font btn-sm"

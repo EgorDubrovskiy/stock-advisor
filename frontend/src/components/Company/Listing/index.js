@@ -16,6 +16,7 @@ import { itemsPerPage } from 'constants/js/common';
 import myrequest from 'utils/myrequest';
 import appConfig from 'config';
 
+//This component make Company page from other components
 class CompaniesListing extends React.Component {
 
   onClickHandler = pageNumber => () => {

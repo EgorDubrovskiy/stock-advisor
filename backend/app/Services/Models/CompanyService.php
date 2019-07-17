@@ -134,27 +134,29 @@ class CompanyService implements CompanyInterface
     public function getNews(array $symbols, bool $allNews = false) : array
     {
         $urls = [];
-        $urlsEnd = $allNews ? '' : '/last/1';
+        $urlsEnd = $allNews === true ? '' : '/last/1';
 
         foreach ($symbols as $symbol) {
             array_push(
                 $urls,
-                config('iextrading.IEX_BASEPATH') . 'stock/' . $symbol . '/news' . $urlsEnd
+                config('iextrading.IEX_BASEPATH') . 'stock/' . $symbol . '/news' . $urlsEnd.
+                '?token='.config('iextrading.IEX_AUTH_TOKEN')
             );
         }
 
         $news = $this->client->batchGet($urls);
 
+        $results = [];
+
         if (!$allNews) {
-            $news = array_map(
-                function ($arrayNews) {
-                    return $arrayNews[0];
-                },
-                $news
-            );
+            foreach ($news as $item) {
+                if (count($item) > 0) {
+                    array_push($results, $item[0]);
+                }
+            }
         }
 
-        return $news;
+        return $results;
     }
 
     /**

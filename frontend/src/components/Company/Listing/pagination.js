@@ -1,5 +1,6 @@
 import React from 'react';
 
+//This component make list of buttons for pagination by companies
 export default function Pagination(props) {
   if (!props.total) {
     return null;

@@ -8,6 +8,7 @@ import { login } from 'redux/actions/user';
 import { unsetErrors } from 'redux/actions/error';
 import Form from './Form';
 
+//This component make Login page from other components
 class Login extends Component {
   constructor(props) {
     super(props);

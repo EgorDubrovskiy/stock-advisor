@@ -12,6 +12,7 @@ import FormUpdate from './FormUpdate';
 import { updateUser } from 'redux/actions/user';
 import { getBookmarks } from 'redux/actions/company';
 
+//This component make Profile page from other components
 class Profile extends Component {
   constructor(props) {
     super(props);

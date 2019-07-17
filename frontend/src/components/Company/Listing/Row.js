@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { forbidExtraProps } from 'airbnb-prop-types';
 import { Link } from 'react-router-dom';
 
+//This component describe row in companies table
 export default function Row(props) {
   return (
     <tr key={props.company.Symbol}>

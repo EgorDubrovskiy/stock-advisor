@@ -17,4 +17,10 @@ interface PriceInterface
      * @return Collection
      */
     public function getAvgPrices(array $symbols, array $years, array $months = null) : Collection;
+
+    /**
+     * @param int $years
+     * @param int $month
+     */
+    public function createForTest(int $years = 5, int $month = 5): void;
 }

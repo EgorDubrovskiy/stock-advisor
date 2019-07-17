@@ -5,6 +5,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import UploaderFile from 'components/common/UploaderFile';
 
+//This component describe form for change information about user
 export default function FormUpdate(props) {
   const errors = {
     login: [],

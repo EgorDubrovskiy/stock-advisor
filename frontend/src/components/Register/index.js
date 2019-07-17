@@ -8,6 +8,7 @@ import { withRouter } from 'react-router-dom';
 import { signUp } from 'redux/actions/user';
 import { unsetErrors } from 'redux/actions/error';
 
+//This component make Register page from other components
 class Register extends Component {
   constructor(props) {
     super(props);

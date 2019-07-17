@@ -11,6 +11,7 @@ import Loading from 'components/common/Loading';
 import { getLastYears } from 'utils/date';
 import { Chart } from 'react-google-charts';
 
+//This component make Home page from other components
 class Home extends Component {
   constructor(props) {
     super(props);

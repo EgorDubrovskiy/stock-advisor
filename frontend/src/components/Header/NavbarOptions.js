@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import { forbidExtraProps } from 'airbnb-prop-types';
 import Search from 'components/Header/Search';
 
+//This component describe main links in header
 export default function NavbarOptions(props) {
   const search =
     <li className="navbar-brand d-flex align-content-center mr-auto">

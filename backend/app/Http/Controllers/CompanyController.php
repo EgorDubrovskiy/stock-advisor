@@ -15,6 +15,7 @@ use DateTime;
 use App\Services\Models\CompanyService as ModelsCompanyService;
 
 /**
+ * Controller for manage data about companies
  * Class CompanyController
  * @package App\Http\Controllers
  */
@@ -39,7 +40,8 @@ class CompanyController extends Controller
         try {
             $symbol = $request->get('symbol');
             $company = $client->get(
-                config('iextrading.IEX_BASEPATH').'/stock/'.$symbol.'/company'
+                config('iextrading.IEX_BASEPATH').'/stock/'.$symbol.'/company'.
+                '?token='.config('iextrading.IEX_AUTH_TOKEN')
             );
             $id = Company::where('symbol', $symbol)->first()->id;
             $company['id'] = $id;

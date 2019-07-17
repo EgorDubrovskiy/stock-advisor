@@ -16,6 +16,7 @@ import { getLastYears, getLastMonths } from 'utils/date';
 import { months as monthsNames } from 'constants/lang/ru/date';
 import Loading from 'components/common/Loading';
 
+//This component make page Company from other components
 class CompanyPage extends React.Component {
   constructor(props) {
     super(props);

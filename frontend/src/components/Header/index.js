@@ -10,6 +10,7 @@ import logo from 'assets/images/logo.png';
 import { avatarUrl } from 'constants/js/common';
 import './index.scss';
 
+//This component make header from other components
 class Header extends React.Component {
   logoutUser = history => () => this.props.logoutUser(history);
 

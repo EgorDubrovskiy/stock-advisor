@@ -69,4 +69,19 @@ class PriceController extends Controller
 
         return new JsonResponse($this->response, JsonResponse::HTTP_OK);
     }
+
+    /**
+     * @param Request $request
+     * @param PriceInterface $priceService
+     * @return JsonResponse
+     */
+    public function createForTest(Request $request, PriceInterface $priceService): JsonResponse
+    {
+        $years = $request->get('years', 5);
+        $months = $request->get('months', 5);
+
+        $priceService->createForTest($years, $months);
+
+        return new JsonResponse($this->response, JsonResponse::HTTP_CREATED);
+    }
 }

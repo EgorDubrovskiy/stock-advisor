@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { logoutUser } from 'redux/actions/user';
 import { withRouter } from 'react-router-dom';
 
+//This component describe authorization links in Header
 class Navbar extends Component {
   onLogout = () => this.props.logoutUser(this.props.history);
 

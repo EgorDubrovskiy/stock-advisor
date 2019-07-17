@@ -8,6 +8,7 @@ import NewsList from 'components/common/NewsList';
 import Loading from 'components/common/Loading';
 import './index.scss';
 
+//This component make News page from other components
 class News extends Component {
   constructor(props) {
     super(props);

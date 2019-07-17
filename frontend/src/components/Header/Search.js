@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import appConfig from 'config';
 import CompaniesListing from 'components/Company/Listing';
 
+//This component describe area for input search information
 export default class Search extends Component {
   constructor(props) {
     super(props);
