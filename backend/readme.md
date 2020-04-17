@@ -7,11 +7,7 @@ Laravel Docker:
 - [docker](docker.com)
 - [Git](https://git-scm.com/)
 
-1. Make clone of this repo:
-```bash
-git clone https://github.com/iTechArt/php-labs-2018-team2
-cd php-labs-2018-team2/backend
-```
+1. Make clone of this repo
 
 2. Make copy of laravel .env.example to .env:
 ```bash
